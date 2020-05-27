@@ -10,13 +10,15 @@ app.use(morgan('combined'));
 
 const PORT = 3000;
 
+app.use(express.static('public'));
+
 app.listen(PORT, () => {
   console.debug(`Your server is running on port ${chalk.blue.bgRed.bold(PORT)}`);
   console.debug(data);
 });
 
 app.get('/', (req, res) => {
-  res.send(`a get request with a / route on port ${PORT} to retrieve items`);
+  res.json(data);
 });
 
 
