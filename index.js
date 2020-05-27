@@ -10,12 +10,18 @@ app.use(morgan('combined'));
 
 const PORT = 3000;
 
-app.use(express.static('public'));
 
 app.listen(PORT, () => {
   console.debug(`Your server is running on port ${chalk.blue.bgRed.bold(PORT)}`);
   console.debug(data);
 });
+
+
+// for this / path load the static public folder
+app.use(express.static('public'));
+
+// for this imej path load the static folder images
+app.use('/imej', express.static('images'));
 
 app.get('/', (req, res) => {
   res.json(data);
