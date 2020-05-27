@@ -10,12 +10,10 @@ app.use(morgan('combined'));
 
 const PORT = 3000;
 
-
 app.listen(PORT, () => {
   console.debug(`Your server is running on port ${chalk.blue.bgRed.bold(PORT)}`);
   console.debug(data);
 });
-
 
 // for this / path load the static public folder
 app.use(express.static('public'));
@@ -27,11 +25,17 @@ app.get('/', (req, res) => {
   res.json(data);
 });
 
+app.get('/nokp/:id', (req, res) => {
+  console.log(req.params.id);
+  let user = Number(req.params.id);
+  console.log(user);
+  console.log(data[user]);
+  res.send(data[user]);
+});
 
 app.post('/politeknik', (req, res) => {
   res.send(`a post request with a /politeknik route on port ${PORT} to post an item`);
 });
-
 
 app.put('/temuduga', (req, res) => {
   res.send(`a put request with a /temuduga route on port ${PORT} to update an item`);
