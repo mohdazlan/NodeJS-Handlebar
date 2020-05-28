@@ -18,6 +18,9 @@ app.listen(PORT, () => {
 // for this / path load the static public folder
 app.use(express.static('public'));
 
+// method to use JSON
+app.use(express.json());
+
 // for this imej path load the static folder images
 app.use('/imej', express.static('images'));
 
@@ -25,11 +28,21 @@ app.get('/', (req, res) => {
   res.json(data);
 });
 
+app.post('/newItem', (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
+});
+
 app.get('/nokp/:id', (req, res) => {
+  // this is the middleware that pulls the data
   console.log(req.params.id);
-  let user = Number(req.params.id);
+  const user = Number(req.params.id);
   console.log(user);
   console.log(data[user]);
+  // middleware that uses the request object
+  console.log(`Request from : ${req.originalUrl}`);
+  console.log(`Request from : ${req.method}`);
+  // everything above is middleware
   res.send(data[user]);
 });
 

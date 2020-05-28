@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js --exec babel-node -e js",
-    "debug": "node --inspect server.js"
+    "debug": "DEBUG=express:* nodemon ./index.js --exec babel-node -e js"
   },
   "keywords": [],
   "author": "",
